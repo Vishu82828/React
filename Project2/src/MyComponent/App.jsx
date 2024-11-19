@@ -2,14 +2,16 @@ import Nav from "./Nav";
 import Slider from "./Slider";
 import Footer from "./Footer";
 import Form from "./Form";
+import Text from "./Text";
 
 function App() {
 
   return (
     <>
       <Nav/>
-      {/* <Slider/> */}
+      <Slider/>
       <Form/> 
+      <Text/>
       <Footer/>
     </>
   )

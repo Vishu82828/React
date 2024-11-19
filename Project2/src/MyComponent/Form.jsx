@@ -19,7 +19,7 @@ function Form() {
   };
 
   return (
-    <form className="row g-3 needs-validation">
+    <form className="row g-3 needs-validation container my-5">
       <div className="col-md-4">
         <label htmlFor="validationCustom01" className="form-label">
           First name
