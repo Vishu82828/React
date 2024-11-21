@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import Form from "./Form";
 import Text from "./Text";
 import Try from "./Try";
+import Hook from "./Hook";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -12,6 +13,8 @@ function App() {
     <>
      <Router>
       <Nav/>
+      {/* <Slider/> */}
+      <Hook/>
       <Routes>
         <Route path="/Text" element={<Text />} />
         <Route path="/Form" element={<Form />} />
