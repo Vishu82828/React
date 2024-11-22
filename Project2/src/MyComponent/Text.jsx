@@ -14,6 +14,12 @@ function Text() {
     setText(newText);
   }
 
+  const submit2 = ()=> {
+    console.log("Submited  " + text);
+    let newText = text.toUpperCase();
+    setText(newText);
+  }
+
   const handleChange = (event) => {
     console.log("Changed");
     setText(event.target.value);
@@ -37,7 +43,6 @@ function Text() {
 //  }
   return (
     <>
-
       <div className="container my-5">
         <label htmlFor="exampleFormControlTextarea1" className="form-label">
           Example textarea
@@ -50,8 +55,11 @@ function Text() {
           placeholder = "Example textarea"
           onChange={handleChange}
         ></textarea>
-        <button className="btn btn-dark my-2" onClick={submit}>
-            Change State to Upper Case
+        <button className="btn btn-dark my-2 mx-1" onClick={submit}>
+            to Upper Case
+        </button>
+        <button className="btn btn-dark my-2 mx-1" onClick={submit2}>
+            to lower Case
         </button>
       </div>
 
