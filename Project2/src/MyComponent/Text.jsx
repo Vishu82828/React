@@ -24,23 +24,6 @@ function Text() {
     console.log("Changed");
     setText(event.target.value);
   };
-//   function Calculator() {
-//     const [firstValue, setFirstValue] = useState(0);
-//     const [secondValue, setSecondValue] = useState(0);
-//     const [result, setResult] = useState(null);
-
-//     const handleChangeFirst = (event) => {
-//       setFirstValue(Number(event.target.value));
-//     };
-
-//     const handleChangeSecond = (event) => {
-//       setSecondValue(Number(event.target.value));
-//     };
-
-//     const handleSubmit = () => {
-//       setResult(firstValue + secondValue);
-//     };
-//  }
   return (
     <>
       <div className="container my-5">
@@ -71,26 +54,6 @@ function Text() {
         <p>You click {count2} Times.</p>
         <button onClick={() => setCount2(count2 - 1)}>click me -</button>
       </div>
-
-      {/* <div className="container my-5">
-        <h1>Calculator</h1>{" "}
-        <input type="number" value={firstValue} onChange={handleChangeFirst} />
-        +
-        <input
-          type="number"
-          value={secondValue}
-          onChange={handleChangeSecond}
-        />
-        <br />
-        <button className="btn btn-primary my-2" onClick={handleSubmit}>
-          Submit
-        </button>
-        {result !== null && (
-          <div className="my-3">
-            <h2>Result: {result}</h2>
-          </div>
-        )}
-      </div> */}
     </>
   );
 }
