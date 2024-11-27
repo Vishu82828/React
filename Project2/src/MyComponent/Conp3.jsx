@@ -13,11 +13,11 @@ const Conp3 = () => {
   }, []);
 
   return (
-    <>
+    <div style={{width: "100%", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <h1>Component 3</h1>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div style={{ }}>
         {initial.map((e) => (
-          <div key={e.id} className="card" style={{ width: "18rem", margin: "10px auto" }}>
+          <div key={e.id} className="card" style={{ width: "32%", margin: "10px auto" }}>
             <img src={e.image} className="card-img-top" alt={e.title} />
             <div className="card-body">
               <h5 className="card-title">{e.title}</h5>
@@ -27,11 +27,13 @@ const Conp3 = () => {
                   Last updated 3 mins ago
                 </small>
               </p>
+              <button type="button" class="btn">Cart</button><br /><br />
+              <button type="button" class="btn">Buy Now</button>
             </div>
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
