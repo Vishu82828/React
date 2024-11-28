@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React from 'react';
+import Spred from './Spred';
 function Try() {
     const arr=[1,2,3,4,5,6,7]
     const arr1=[
@@ -27,6 +27,7 @@ function Try() {
             </>
         ))
       }
+      <Spred/>
     </div>
   )
 }

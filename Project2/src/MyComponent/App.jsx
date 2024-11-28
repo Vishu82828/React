@@ -6,6 +6,7 @@ import Text from "./Text";
 import Try from "./Try";
 import Hook from "./Hook";
 import Conp3 from "./Conp3";
+// import Spred from "./Spred";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
