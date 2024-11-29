@@ -30,6 +30,9 @@ const Nav = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="Hook">Hooks</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="Sing">Sing Up</Link>
+              </li>
               <li className="nav-item dropdown">
                 <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Dropdown

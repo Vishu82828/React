@@ -5,13 +5,13 @@ const Conp3 = () => {
 
   useEffect(() => {
     const myfun = async () => {
-      const response = await fetch("https://fakestoreapi.com/products");
+      const response = await fetch(""); 
       const data = await response.json();
       final(data);
     };
     myfun();
   }, []);
-
+  // https://fakestoreapi.com/products // this is url that from fetch request
   return (
     <div style={{width: "100%", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <h1>Component 3</h1>
@@ -27,8 +27,8 @@ const Conp3 = () => {
                   Last updated 3 mins ago
                 </small>
               </p>
-              <button type="button" class="btn">Cart</button><br /><br />
-              <button type="button" class="btn">Buy Now</button>
+              <button type="button" className="btn">Cart</button><br /><br />
+              <button type="button" className="btn">Buy Now</button>
             </div>
           </div>
         ))}
