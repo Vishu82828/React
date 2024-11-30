@@ -1,0 +1,17 @@
+.heading{
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+.img{
+    height: 100px;
+    width: 100px;
+}
+table{
+    width: 100%;
+    height: auto;
+    border: 2px solid;
+}
+tr{
+    border: 2px solid;
+}

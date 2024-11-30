@@ -45,7 +45,7 @@ const Nav = () => {
                 </ul>
               </li>
               <li className="nav-item">
-                <Link className="nav-link disabled" to="#" aria-disabled="true">About</Link>
+                <Link className="nav-link disabled" to="Comp4" aria-disabled="true" >About</Link>
               </li>
             </ul>
             <form className="d-flex" role="search">
