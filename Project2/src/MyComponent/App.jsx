@@ -16,8 +16,6 @@ function App() {
     <>
      <Router>
       <Nav/>
-      {/* <Hook/>
-      <Conp3/> */}
       <Routes>
         <Route path="/Hooks" element={<Hook />} />
         <Route path="/Text" element={<Text />} />

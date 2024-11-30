@@ -12,6 +12,7 @@ const Hook = () => {
     <>
       {/* <h1>Welcome to React Hooks </h1>
       <button onClick={myfun}>Click</button> */}
+      <h1>Hook Page</h1>
       <h1>{num}</h1>
       <button onClick={myfun}>update</button><br />
       <h2>updates = {text}</h2>
