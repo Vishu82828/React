@@ -1,8 +1,26 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import "../Styles/Nav.css";
+import { FaCartPlus } from "react-icons/fa";
+import { IoBagCheckOutline } from "react-icons/io5";
 
 function Nav1() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    if (userData && userData.username) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    // localStorage.removeItem('userData');
+    setIsLoggedIn(false);
+    navigate('/SingIn');
+  };
+
   const [isOpen, setIsOpen] = useState(false);
   
   const toggleNav = () => {
@@ -11,39 +29,49 @@ function Nav1() {
 
   const navItems = [
     { id: 1, path: "Home", name: "Home" },
-    { id: 2, path: "Bolg", name: "Blogs" },
+    { id: 2, path: "Blog", name: "Blog" },
     { id: 3, path: "Services", name: "Services" },
     { id: 4, path: "About", name: "About" },
     { id: 5, path: "Contact", name: "Contact" }
   ];
 
   const navIcons = [
-    { id: 6, path: "SingIn", name: "Sign In" },
-    { id: 7, path: "SingUp", name: "Sign Up" },
-    { id: 8, path: "Cart", name: "Cart" },
-    { id: 9, path: "Checkout", name: "Checkout" }
+    { id: 6, path: "Cart", name: "Cart" },
+    { id: 7, path: "Checkout", name: "Checkout" }
   ];
 
   return (
     <>
-      <nav className='navbar'>
-        <div className='navLogo'>
-          <Link className='navBrand' to="Home">Logo</Link>
-          <div className={`hamburger ${isOpen ? 'open' : ''}`} onClick={toggleNav}>
-            <span className="bar"></span>
-            <span className="bar"></span>
-            <span className="bar"></span>
+      <nav className='navbar__nav'>
+        <div className='navbar__logo'>
+          <Link className='navbar__brand' to="Home">Logo</Link>
+          <div className={`navbar__hamburger ${isOpen ? 'open' : ''}`} onClick={toggleNav}>
+            <span className="navbar__bar"></span>
+            <span className="navbar__bar"></span>
+            <span className="navbar__bar"></span>
           </div>
         </div>
-        <div className={`navSection ${isOpen ? 'open' : ''}`}>
+        <div className={`navbar__section ${isOpen ? 'open' : ''}`}>
           {navItems.map(item => (
-            <Link key={item.id} className={`navtext nav${item.name}`} to={item.path}>{item.name}</Link>
+            <Link key={item.id} className={`navbar__text navbar__${item.name}`} to={item.path}>{item.name}</Link>
           ))}
         </div>
-        <div className={`navIcon ${isOpen ? 'open' : ''}`}>
-          {navIcons.map(icon => (
-            <Link key={icon.id} className={`navtext nav${icon.name}`} to={icon.path}>{icon.name}</Link>
-          ))}
+        <div className={`navbar__icons ${isOpen ? 'open' : ''}`}>
+          {!isLoggedIn && (
+            <>
+              <Link className='navbar__text navbar__signin' to="SingIn">Sign In</Link>
+              <Link className='navbar__text navbar__signup' to="SingUp">Sign Up</Link>
+            </>
+          )}
+          {isLoggedIn && (
+            <button className='navbar__text navbar__logout' onClick={handleLogout}>Logout</button>
+          )}
+          <Link className='navbar__text navbar__cart' to="Cart" title='Cart'>
+            <FaCartPlus className='navbar__icon' />
+          </Link>
+          <Link className='navbar__text navbar__checkout' to="Checkout" title='CheckOut'>
+            <IoBagCheckOutline className='navbar__icon' />
+          </Link>
         </div>
       </nav>
     </>

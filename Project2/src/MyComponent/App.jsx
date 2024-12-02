@@ -8,6 +8,7 @@ import Hook from "./Hook";
 import Conp3 from "./Conp3";
 import Sing from "./Sing";
 import Comp4 from "./Comp4";
+import Login from "./Login";
 // import Spred from "./Spred";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/Try" element={<Try />} />
         <Route path="/Sing" element={<Sing />} />
         <Route path="/Comp4" element={<Comp4 />} />
+        <Route path="/Login" element={<Login />} />
         {/* <Route path="/Footer" element={<Footer />} /> */}
       </Routes>
       {/* <Slider/>

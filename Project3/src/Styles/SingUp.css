@@ -1,0 +1,86 @@
+/* Reset CSS */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Container for the signup form */
+.singup__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 1.5%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Input group styles */
+.singup__input-group {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.singup__label {
+  width: 48%;
+}
+
+/* Input styles */
+.singup__input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+/* Input focus styles */
+.singup__input:focus {
+  border-color: #f0a500;
+  outline: none;
+}
+
+/* Heading styles */
+.singup__head {
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  margin-top: 4%;
+  margin-bottom: 2%;
+  font-weight: 600;
+  cursor: crosshair;
+}
+
+.singup__head:hover {
+  color: #f0a500;
+}
+
+/* Button styles */
+.singup__button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Button hover styles */
+.singup__button:hover {
+  background-color: #f0a500;
+}
+
+.singup__login-button {
+  margin-top: 5%;
+}

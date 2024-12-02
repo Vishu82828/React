@@ -1,0 +1,80 @@
+/* Reset CSS */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Container for the sign-in form */
+.singin__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+.singin__head {
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  margin-top: 6%;
+  margin-bottom: 3%;
+  font-weight: 600;
+  cursor: crosshair;
+}
+
+.singin__head:hover {
+  color: #f0a500;
+}
+
+/* Input styles */
+.singin__input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  transition: border-color 0.3s;
+}
+
+/* Input focus styles */
+.singin__input:focus {
+  border-color: #f0a500;
+  outline: none;
+}
+
+/* Button styles */
+.singin__button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Button hover styles */
+.singin__button:hover {
+  background-color: #f0a500;
+}
+
+.singin__signup-button {
+  margin-top: 4%;
+}
+
+/* .singin__logout-button {
+  margin-top: 4%;
+  color: red;
+  cursor: pointer;
+} */
