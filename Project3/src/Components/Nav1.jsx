@@ -15,11 +15,11 @@ function Nav1() {
     }
   }, []);
 
-  const handleLogout = () => {
-    // localStorage.removeItem('userData');
-    setIsLoggedIn(false);
-    navigate("/SingIn");
-  };
+  // const handleLogout = () => {
+  //   // localStorage.removeItem('userData');
+  //   setIsLoggedIn(false);
+  //   navigate("/SingIn");
+  // };
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -69,12 +69,13 @@ function Nav1() {
         </div>
         <div className={`navbar__icons ${isOpen ? "open" : ""}`}>
           {isLoggedIn ? (
-            <button
-              className="navbar__text navbar__logout"
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
+            // <Link className="navbar__text navbar__logout" onClick={handleLogout}>LogOut</Link>
+            <Link className="navbar__text navbar__logout" 
+            onClick={()=>{setIsLoggedIn(false);
+              navigate("/SingIn");
+            }}>
+              LogOut
+            </Link>
           ) : (
             <>
               <Link className="navbar__text navbar__signin" to="SingIn">
