@@ -29,7 +29,7 @@ function Nav1() {
 
   const navItems = [
     { id: 1, path: "Home", name: "Home" },
-    { id: 2, path: "Blog", name: "Blog" },
+    { id: 2, path: "Product", name: "Product" },
     { id: 3, path: "Services", name: "Services" },
     { id: 4, path: "About", name: "About" },
     { id: 5, path: "Contact", name: "Contact" },

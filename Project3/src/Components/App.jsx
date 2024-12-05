@@ -6,7 +6,7 @@ import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
 import Services from "./Services";
-import Blog from "./Blog";
+import Product from "./Product";
 import Cart from "./Cart";
 import Checkout from "./Checkout";
 import Profile from "./Profile";
@@ -26,7 +26,7 @@ function App() {
           <Route path='About' element={<About/>} />
           <Route path='Contact' element={<Contact/>} />
           <Route path='Services' element={<Services/>} />
-          <Route path='Blog' element={<Blog/>} />
+          <Route path='Product' element={<Product/>} />
           <Route path='Cart' element={<Cart/>} />
           <Route path='Checkout' element={<Checkout/>} />
           <Route path='Profile' element={<Profile/>} />
