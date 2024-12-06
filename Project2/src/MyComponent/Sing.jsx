@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Sing = () => {
-  const navigate = useNavigate(); // Use useNavigate instead of useNavigation
+  const navigate = useNavigate();
 
   const [data, setData] = useState({fname: "", lname:"", pass1:"", email:"", phone:""});
 

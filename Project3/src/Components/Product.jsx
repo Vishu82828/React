@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../Styles/Blog.css';
-import ProductDetails from './ProductDetails';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Product() {
   const navigate = useNavigate();
@@ -28,6 +27,10 @@ function Product() {
       });
   }, []);
 
+  const handleNavigation = (id) => {
+    navigate(`/ProductDetails/${id}`);
+  };
+
   const addToCart = (product) => {
     setCart([...cart, product]);
   };
@@ -51,13 +54,9 @@ function Product() {
           <div key={index} className="card">
             <img src={item.image} alt={item.title} />
             <div className="card-content">
-              <Link onClick={()=>{useNavigate("/ProductDetails")}}><h3 className="card-title">{item.title}</h3></Link>
-              {/* <p className="card-description">{item.description}</p> */}
-              {/* <p className="card-price">${item.price}</p> */}
-              {/* <div className="card-rating">
-                <img src="https://www.svgrepo.com/show/18248/star.svg" alt="Rating" width="20" />
-                <span>{item.rating.rate} ({item.rating.count})</span>
-              </div> */}
+              <div onClick={() => handleNavigation(item.id)} className="card-title" style={{ cursor: 'pointer' }}>
+                <h3>{item.title}</h3>
+              </div>
               <div className="card-buttons">
                 <button className="card-button add-button" onClick={() => addToCart(item)}>Add to Cart</button>
                 <button className="card-button remove-button" onClick={() => removeFromCart(item)}>Remove</button>
