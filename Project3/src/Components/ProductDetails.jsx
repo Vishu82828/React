@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import '../Styles/ProductDetails.css';
 
 function ProductDetails() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -25,6 +26,10 @@ function ProductDetails() {
         setLoading(false);
       });
   }, [id]);
+
+  const handleNavigation = () => {
+    navigate("/Product");
+  }
 
   if (loading) {
     return <h1>Loading...</h1>;
@@ -49,6 +54,7 @@ function ProductDetails() {
           <img src="https://www.svgrepo.com/show/18248/star.svg" alt="Rating" width="20" />
           <span>{product.rating.rate} ({product.rating.count})</span>
         </div>
+        <button onClick={handleNavigation} style={{cursor: "pointer"}} className='ProductDetails-button'>Back </button>
       </div>
     </div>
   );

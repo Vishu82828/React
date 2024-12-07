@@ -53,4 +53,20 @@
     margin-left: 5px;
     font-size: 1em;
   }
+
+  .ProductDetails-button{
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 2%;
+  }
   
+  .ProductDetails-button:hover{
+    background-color: #f0a500;
+    color: #333;
+    transform: scale(1.2);
+  }
