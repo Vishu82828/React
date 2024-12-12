@@ -1,10 +1,14 @@
-import '../API/userService.jsx';
-import Admin from './Admin.jsx';
-function App() {
+import { useState } from 'react'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
+import Admin from './Admin'
 
+function App() {
+  
   return (
     <>
-      <h1>Hello</h1>
+     <h1>This is app</h1>
+     <Admin/>
     </>
   )
 }
