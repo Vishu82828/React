@@ -17,6 +17,11 @@ export const deleteuser = async (id) => {
   return response.data;
 };
 
+export const updateuser = async (id, updatedUser) => {
+  const response = await axios.put(`${API_URL}/${id}`, updatedUser);
+  return response.data;
+};
+
 
 // import axios from 'axios';
 

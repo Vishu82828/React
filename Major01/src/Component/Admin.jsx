@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { getuser, adduser, deleteuser } from "../API/userService.jsx";
+import { getuser, adduser, deleteuser, updateuser } from "../API/userService.jsx";
 
 function Admin() {
   const [user_data, update_user_data] = useState([]);
   const [name, updatename] = useState("");
   const [email, updateemail] = useState("");
   const [password, updatepassword] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentUserId, setCurrentUserId] = useState(null);
 
   const handleAddUser = async (e) => {
     e.preventDefault();
@@ -14,7 +16,13 @@ function Admin() {
       return;
     }
     const newUser = { name, email, password };
-    await adduser(newUser);
+    if (isEditing) {
+      await updateuser(currentUserId, newUser);
+      setIsEditing(false);
+      setCurrentUserId(null);
+    } else {
+      await adduser(newUser);
+    }
     updatename("");
     updateemail("");
     updatepassword("");
@@ -24,9 +32,17 @@ function Admin() {
 
   const handleDeleteUser = async (id) => {
     console.log("delete user", id);
-    await deleteuser(id); // Make sure to use the correct API function
+    await deleteuser(id);
     const data = await getuser();
     update_user_data(data);
+  };
+
+  const handleEditUser = (user) => {
+    setIsEditing(true);
+    setCurrentUserId(user.id);
+    updatename(user.name);
+    updateemail(user.email);
+    updatepassword(user.password);
   };
 
   useEffect(() => {
@@ -63,7 +79,7 @@ function Admin() {
                 <button onClick={() => handleDeleteUser(item.id)}>delete</button>
               </td>
               <td>
-                <button>update</button>
+                <button onClick={() => handleEditUser(item)}>edit</button>
               </td>
             </tr>
           ))}
@@ -101,7 +117,7 @@ function Admin() {
         </label>
         <br />
         <br />
-        <button type="submit">Add User</button>
+        <button type="submit">{isEditing ? "Update User" : "Add User"}</button>
       </form>
     </>
   );
