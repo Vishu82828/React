@@ -12,10 +12,11 @@ export const adduser = async (user) => {
   return response.data;
 };
 
-export const deleteuser = async (user) => {
-  const response = await axios.delete(`${API_URL}/${user._id}`);
+export const deleteuser = async (id) => {
+  const response = await axios.delete(`${API_URL}/${id}`);
   return response.data;
-}
+};
+
 
 // import axios from 'axios';
 

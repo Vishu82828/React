@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getuser, adduser } from "../API/userService.jsx";
+import { getuser, adduser, deleteuser } from "../API/userService.jsx";
 
 function Admin() {
   const [user_data, update_user_data] = useState([]);
@@ -23,8 +23,8 @@ function Admin() {
   };
 
   const handleDeleteUser = async (id) => {
-    console.log("delete user",id);
-    await fetch(`/api/user/${id}`, { method: "DELETE" });
+    console.log("delete user", id);
+    await deleteuser(id); // Make sure to use the correct API function
     const data = await getuser();
     update_user_data(data);
   };
@@ -60,7 +60,7 @@ function Admin() {
               <td>{item.email}</td>
               <td>{item.password}</td>
               <td>
-                <button onClick={handleDeleteUser}>delete</button>
+                <button onClick={() => handleDeleteUser(item.id)}>delete</button>
               </td>
               <td>
                 <button>update</button>
