@@ -21,17 +21,3 @@ export const updateuser = async (id, updatedUser) => {
   const response = await axios.put(`${API_URL}/${id}`, updatedUser);
   return response.data;
 };
-
-
-// import axios from 'axios';
-
-// const API_URL = 'http://localhost:3000';
-
-// export const getuser = async () => {
-//   const response = await axios.get(`${API_URL}/user_data`);
-//   return response.data;
-// };
-
-// export const adduser = async (user) => {
-//   await axios.post(`${API_URL}/user_data`, user);
-// };
