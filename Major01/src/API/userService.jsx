@@ -21,3 +21,31 @@ export const updateuser = async (id, updatedUser) => {
   const response = await axios.put(`${API_URL}/${id}`, updatedUser);
   return response.data;
 };
+
+
+
+
+
+
+
+
+
+
+// ------------------------------------------------------------------------------------------------------------
+// import axios from 'axios';
+
+// const API = axios.create({
+//     baseURL:"http://localhost:3000"
+// })
+
+// export const getData = () => {
+//     return API.get("/user_data");
+// }
+
+// export const delData = (id) => {
+//     return API.delete(`/user_data/${id}`)
+// }
+
+// export const addUser = (user) => {
+//     return API.post('/user_data',user)
+// }

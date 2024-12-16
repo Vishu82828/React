@@ -1,42 +1,40 @@
 {
   "user_data": [
     {
-      "name": "ankur",
-      "email": "ankur@gmail.com",
-      "password": 1234,
-      "id": "12"
-    },
-    {
-      "id": "123",
-      "name": "anguri",
-      "email": "anguri@gmail.com",
-      "password": 1234
-    },
-    {
-      "id": "124",
-      "name": "animaction",
-      "email": "ankanimactionur@gmail.com",
-      "password": 1234
-    },
-    {
-      "id": "663a",
+      "id": "fbb6",
       "name": "abhishek gupta",
-      "email": "vishu82",
+      "email": "gupta@gmail.com",
       "password": "12345"
     },
     {
-      "id": "9f62",
-      "name": "Survi",
-      "email": "Survi@gmail.com",
-      "password": "12345"
-    }
-  ],
-  "user_data1": [
+      "id": "abde",
+      "name": "animesh",
+      "email": "animeshsingh123097@gmail.com",
+      "password": "57679"
+    },
     {
-      "id": "124",
-      "name": "animaction",
-      "email": "ankanimactionur@gmail.com",
-      "password": 1234
+      "id": "14d5",
+      "name": "sumit kumar pal",
+      "email": "sumit@gmail",
+      "password": "75867"
+    },
+    {
+      "id": "710e",
+      "name": "Abhishek Kumar",
+      "email": "kumar@gmail",
+      "password": "678990"
+    },
+    {
+      "id": "619f",
+      "name": "sourav",
+      "email": "gupta@gmail",
+      "password": "12345"
+    },
+    {
+      "id": "c1bb",
+      "name": "Vishwajeet",
+      "email": "Singh@gmail.com",
+      "password": "12345"
     }
   ]
 }
