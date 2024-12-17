@@ -1,0 +1,50 @@
+.custom-navbar {
+  background-color: #343a40;
+  color: white;
+}
+
+.custom-navbar-brand {
+  color: #f8f9fa;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.custom-navbar-toggle {
+  border-color: #f8f9fa;
+}
+
+.custom-navbar-collapse {
+  justify-content: flex-end;
+}
+
+.custom-navbar-nav {
+  display: flex;
+  gap: 15px;
+}
+
+.custom-nav-link {
+  color: #f8f9fa;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.custom-nav-link:hover {
+  color: #ced4da;
+}
+
+.custom-nav-dropdown {
+  color: #f8f9fa;
+}
+
+.custom-nav-dropdown-item {
+  color: #343a40;
+  text-decoration: none;
+}
+
+.custom-nav-dropdown-item:hover {
+  background-color: #ced4da;
+}
+
+.custom-signup-button {
+  margin-left: 15px;
+}
