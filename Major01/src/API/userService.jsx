@@ -1,51 +1,21 @@
-import axios from "axios";
+import axios from 'axios';
 
-const API_URL = "http://localhost:3000/user_data";
+const API = axios.create({
+    baseURL: "http://localhost:3000"
+});
 
-export const getuser = async () => {
-  const response = await axios.get(API_URL);
-  return response.data;
-};
+export const getData = () => {
+    return API.get("/user_data");
+}
 
-export const adduser = async (user) => {
-  const response = await axios.post(API_URL, user);
-  return response.data;
-};
+export const addUser = (user) => {
+    return API.post("/user_data", user);
+}
 
-export const deleteuser = async (id) => {
-  const response = await axios.delete(`${API_URL}/${id}`);
-  return response.data;
-};
+export const delData = (id) => {
+    return API.delete(`/user_data/${id}`);
+}
 
-export const updateuser = async (id, updatedUser) => {
-  const response = await axios.put(`${API_URL}/${id}`, updatedUser);
-  return response.data;
-};
-
-
-
-
-
-
-
-
-
-
-// ------------------------------------------------------------------------------------------------------------
-// import axios from 'axios';
-
-// const API = axios.create({
-//     baseURL:"http://localhost:3000"
-// })
-
-// export const getData = () => {
-//     return API.get("/user_data");
-// }
-
-// export const delData = (id) => {
-//     return API.delete(`/user_data/${id}`)
-// }
-
-// export const addUser = (user) => {
-//     return API.post('/user_data',user)
-// }
+export const updateUser = (id, updatedUser) => {
+    return API.put(`/user_data/${id}`, updatedUser);
+}

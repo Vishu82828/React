@@ -8,7 +8,6 @@ import TVShows from './TVShows';
 import Categories from './Categories';
 import UserProfile from './UserProfile.jsx';
 import CustomNavbar from './CustomNavbar.jsx';
-// import './App.css';
 
  function App() {
   const [showSignUp, setShowSignUp] = useState(false);
