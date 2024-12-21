@@ -4,12 +4,16 @@ import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import Button from '@mui/material/Button';
 import Email from '@mui/icons-material/Email';
 import Lock from '@mui/icons-material/Lock';
-import Button from '@mui/material/Button';
 
-function SingIn() {
+function SignUp() {
   const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
   });
@@ -50,6 +54,38 @@ function SingIn() {
           width: '100%',
         }}
       >
+        <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
+          <FormControl variant="standard" fullWidth>
+            <InputLabel htmlFor="first-name">First Name</InputLabel>
+            <Input
+              id="first-name"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              startAdornment={
+                <InputAdornment position="start">
+                  <AccountCircle />
+                </InputAdornment>
+              }
+            />
+          </FormControl>
+
+          <FormControl variant="standard" fullWidth>
+            <InputLabel htmlFor="last-name">Last Name</InputLabel>
+            <Input
+              id="last-name"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              startAdornment={
+                <InputAdornment position="start">
+                  <AccountCircle />
+                </InputAdornment>
+              }
+            />
+          </FormControl>
+        </Box>
+
         <FormControl variant="standard" fullWidth sx={{ mb: 2 }}>
           <InputLabel htmlFor="email">Email</InputLabel>
           <Input
@@ -82,11 +118,11 @@ function SingIn() {
         </FormControl>
 
         <Button variant="contained" color="primary" type="submit" fullWidth>
-          Log In
+          Sign Up
         </Button>
       </Box>
     </Box>
   );
 }
 
-export default SingIn;
+export default SignUp;
