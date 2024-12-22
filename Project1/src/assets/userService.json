@@ -1,0 +1,83 @@
+{
+  "admins": [
+    {
+      "id": "1",
+      "name": "Admin One",
+      "email": "admin.one@platform.com",
+      "image": "https://randomuser.me/api/portraits/men/1.jpg",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "name": "Admin Two",
+      "email": "admin.two@platform.com",
+      "image": "https://randomuser.me/api/portraits/women/2.jpg",
+      "role": "admin"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "User One",
+      "email": "user.one@platform.com",
+      "image": "https://randomuser.me/api/portraits/men/3.jpg",
+      "role": "user"
+    },
+    {
+      "id": "2",
+      "name": "User Two",
+      "email": "user.two@platform.com",
+      "image": "https://randomuser.me/api/portraits/women/4.jpg",
+      "role": "user"
+    },
+    {
+      "id": "3",
+      "name": "User Three",
+      "email": "user.three@platform.com",
+      "image": "https://randomuser.me/api/portraits/men/5.jpg",
+      "role": "user"
+    },
+    {
+      "id": "4",
+      "name": "User Four",
+      "email": "user.four@platform.com",
+      "image": "https://randomuser.me/api/portraits/women/6.jpg",
+      "role": "user"
+    },
+    {
+      "id": "5",
+      "name": "User Five",
+      "email": "user.five@platform.com",
+      "image": "https://randomuser.me/api/portraits/men/7.jpg",
+      "role": "user"
+    },
+    {
+      "id": "0cf8",
+      "firstName": "VISHWAJEET",
+      "lastName": "SINGH",
+      "email": "vishwajeetsingh8422@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "da8b",
+      "firstName": "VISHWAJEET",
+      "lastName": "SINGH",
+      "email": "vishwajeetsingh8422@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "cf7b",
+      "firstName": "VISHWAJEET",
+      "lastName": "SINGH",
+      "email": "vishwajeetsingh8422@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "bd4a",
+      "firstName": "VISHWAJEET",
+      "lastName": "SINGH",
+      "email": "vishwajeetsingh8422@gmail.com",
+      "password": "12345"
+    }
+  ]
+}

@@ -9,7 +9,9 @@ import Account from './Account';
 import Dashboard from './Dashboard';
 import Logout from './Logout';
 import SignUp from './SignUp';
-import SignIn from './SingIn';
+import SignIn from './SignIn';
+import { ToastContainer, toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />
       </Routes>
+      <ToastContainer />
     </Router>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
@@ -7,8 +7,18 @@ import FormControl from '@mui/material/FormControl';
 import Email from '@mui/icons-material/Email';
 import Lock from '@mui/icons-material/Lock';
 import Button from '@mui/material/Button';
+import { getData, addData } from '../API/User';
+import { toast } from 'react-toastify';
+
 
 function SingIn() {
+  const GetUserData = async () => {
+    const response = await getData();
+    console.log(response.data)
+  }
+  useEffect(()=>{
+    GetUserData();
+  },[])
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -25,7 +35,7 @@ function SingIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form Data:', formData);
-    // Add form submission logic here
+    
   };
 
   return (

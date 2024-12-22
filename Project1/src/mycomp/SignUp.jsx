@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
@@ -9,6 +9,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import Button from '@mui/material/Button';
 import Email from '@mui/icons-material/Email';
 import Lock from '@mui/icons-material/Lock';
+import { addData } from '../API/User';
+import { toast } from 'react-toastify';
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -20,17 +22,20 @@ function SignUp() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({...formData,[name]: value});
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form Data:', formData);
-    // Add form submission logic here
+    try {
+      const addUser = await addData(formData);
+      toast.success(`Welcome ${addUser.data.firstName}`);
+    } catch (error) {
+      console.error('Error adding user:', error);
+      toast.error('Error adding user!');
+    }
   };
+  
 
   return (
     <Box
