@@ -1,4 +1,5 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useContext } from "react";
+import { Navigate } from "react-router-dom";
 
 // Create the context
 export const UserContext = createContext();
@@ -13,3 +14,13 @@ export const UserProvider = ({ children }) => {
         </UserContext.Provider>
     );
 };
+
+export const ProtectedRoute = ({ children }) => {
+    const { user } = useContext(UserContext);
+
+    if (!user) {
+        return <Navigate to="/sign-in" />
+    }
+
+    return children;
+}

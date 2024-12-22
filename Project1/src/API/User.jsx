@@ -33,3 +33,7 @@ export const getData = () => {
 export const addData = (user) => {
     return API.post("/users",user);
 }
+
+export const adminData = () => {
+    return API.post("/admins/login")
+}

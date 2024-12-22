@@ -7,7 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import Email from '@mui/icons-material/Email';
 import Lock from '@mui/icons-material/Lock';
 import Button from '@mui/material/Button';
-import { getData } from '../API/User';
+import { getData, adminData } from '../API/User';
 import { toast } from 'react-toastify';
 import { UserContext } from './UserContext';
 import { useNavigate, Link } from 'react-router-dom';
@@ -16,19 +16,6 @@ import Typography from '@mui/material/Typography';
 function SignIn() {
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
-
-  const GetUserData = async () => {
-    try {
-      const response = await getData();
-      console.log(response.data);
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-    }
-  };
-
-  useEffect(() => {
-    GetUserData();
-  }, []);
 
   const [formData, setFormData] = useState({
     email: '',
@@ -54,24 +41,44 @@ function SignIn() {
     }
 
     try {
-      const response = await getData();
-      const data = response.data;
-      console.log('Fetched data:', data);
+      // Fetch user data
+      const userResponse = await getData();
+      const users = userResponse.data;
       
-      const matchEmail = data.find((e) => e.email === formData.email);
-      if (!matchEmail) {
+      // Fetch admin data
+      const adminResponse = await adminData();
+      const admins = adminResponse.data;
+
+      // Check if email exists in users or admins
+      const matchUser = users.find((e) => e.email === formData.email);
+      const matchAdmin = admins.find((e) => e.email === formData.email);
+
+      // If no match found
+      if (!matchUser && !matchAdmin) {
         toast.error('Email not found');
         return;
       }
 
-      if (matchEmail.password !== formData.password) {
+      // Validate password
+      if (matchUser && matchUser.password !== formData.password) {
+        toast.error('Invalid password');
+        return;
+      } else if (matchAdmin && matchAdmin.password !== formData.password) {
         toast.error('Invalid password');
         return;
       }
 
-      toast.success(`Welcome, ${matchEmail.firstName}`);
-      setUser(matchEmail);
-      navigate('/profile');
+      // Successful login
+      const user = matchUser || matchAdmin;
+      toast.success(`Welcome, ${user.firstName || user.name}`);
+      setUser(user);
+
+      // Redirect based on role
+      if (user.role === 'admin') {
+        navigate('/dashboard');
+      } else {
+        navigate('/profile');
+      }
     } catch (error) {
       console.error('Error during login:', error);
       toast.error('Error during login!');

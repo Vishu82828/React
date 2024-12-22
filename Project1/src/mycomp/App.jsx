@@ -11,7 +11,7 @@ import SignUp from './SignUp';
 import SignIn from './SignIn';
 import { ToastContainer } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css';
-import { UserProvider } from './UserContext.jsx'
+import { UserProvider, ProtectedRoute } from './UserContext.jsx'
 
 function App() {
   return (
@@ -19,13 +19,13 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Movies />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/tv-shows" element={<TvShows />} />
-          <Route path="/my-list" element={<MyList />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" element={<ProtectedRoute> <Movies /> </ProtectedRoute> } />
+          <Route path="/movies" element={<ProtectedRoute> <Movies /> </ProtectedRoute> } />
+          <Route path="/tv-shows" element={<ProtectedRoute> <TvShows /> </ProtectedRoute> } />
+          <Route path="/my-list" element={<ProtectedRoute> <MyList /> </ProtectedRoute> } />
+          <Route path="/profile" element={<ProtectedRoute> <Profile /> </ProtectedRoute> } />
+          <Route path="/account" element={<ProtectedRoute> <Account/> </ProtectedRoute> } />
+          <Route path="/dashboard" element={<ProtectedRoute> <Dashboard /> </ProtectedRoute> } />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/sign-in" element={<SignIn />} />
         </Routes>
