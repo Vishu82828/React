@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -13,8 +14,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import Logout from '@mui/icons-material/Logout';
+import ExitToApp from '@mui/icons-material/ExitToApp'; // Updated import for SignOut icon
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { UserContext } from './UserContext';
 
 const theme = createTheme({
   palette: {
@@ -28,19 +30,11 @@ const theme = createTheme({
 });
 
 const pages = ['Movies', 'TV Shows', 'My List'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
-const demoSession = {
-  user: {
-    name: 'Bharat Kashyap',
-    email: 'bharatkashyap@outlook.com',
-    image: 'https://avatars.githubusercontent.com/u/19550456',
-  },
-};
+const settings = ['Profile', 'Account', 'Dashboard', 'SignOut']; // Updated settings array
 
 function Navbar() {
+  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
-  const [session, setSession] = React.useState(null);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -60,13 +54,8 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
-  const signIn = () => {
-    setSession(demoSession);
-    navigate("/sign-up");
-  };
-
   const signOut = () => {
-    setSession(null);
+    setUser(null); 
     navigate("/sign-in");
   };
 
@@ -167,11 +156,11 @@ function Navbar() {
               ))}
             </Box>
             <Box sx={{ flexGrow: 0 }}>
-              {session ? (
+              {user ? ( // Check if user is authenticated
                 <>
                   <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                      <Avatar alt="User Profile" src={session.user.image} />
+                      <Avatar alt="User Profile" src={user.image} />
                     </IconButton>
                   </Tooltip>
                   <Menu
@@ -203,7 +192,7 @@ function Navbar() {
                     ))}
                     <MenuItem onClick={signOut}>
                       <Typography textAlign="center" sx={{ color: 'success.main' }}>Sign Out</Typography>
-                      <Logout sx={{ ml: 1, color: 'success.main' }} />
+                      <ExitToApp sx={{ ml: 1, color: 'success.main' }} /> {/* Updated icon for SignOut */}
                     </MenuItem>
                   </Menu>
                 </>
@@ -211,7 +200,8 @@ function Navbar() {
                 <Button
                   variant="contained"
                   color="success"
-                  onClick={signIn}
+                  component={Link}
+                  to="/sign-in"
                 >
                   Sign In
                 </Button>

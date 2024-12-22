@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
-import TextField from '@mui/material/TextField';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Button from '@mui/material/Button';
 import Email from '@mui/icons-material/Email';
 import Lock from '@mui/icons-material/Lock';
 import { addData } from '../API/User';
 import { toast } from 'react-toastify';
+import { useNavigate, Link } from 'react-router-dom';
+import Typography from '@mui/material/Typography';
 
 function SignUp() {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -22,20 +26,26 @@ function SignUp() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({...formData,[name]: value});
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
+      toast.error('All fields are required');
+      return;
+    }
+
     try {
       const addUser = await addData(formData);
       toast.success(`Welcome ${addUser.data.firstName}`);
+      navigate('/sign-in');
     } catch (error) {
       console.error('Error adding user:', error);
       toast.error('Error adding user!');
     }
   };
-  
 
   return (
     <Box
@@ -44,7 +54,7 @@ function SignUp() {
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '100vh',
-        backgroundColor: '#f5f5f5'
+        backgroundColor: '#f5f5f5',
       }}
     >
       <Box
@@ -125,6 +135,15 @@ function SignUp() {
         <Button variant="contained" color="primary" type="submit" fullWidth>
           Sign Up
         </Button>
+
+        <Box sx={{ mt: 2, textAlign: 'center' }}>
+          <Typography variant="body2">
+            Already have an account?{' '}
+            <Link to="/sign-in" style={{ color: '#1976d2', textDecoration: 'none', cursor: 'pointer' }}>
+              Sign In
+            </Link>
+          </Typography>
+        </Box>
       </Box>
     </Box>
   );
