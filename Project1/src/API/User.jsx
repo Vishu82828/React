@@ -23,17 +23,21 @@
 import axios from 'axios';
 
 const API = axios.create({
-    baseURL: "http://localhost:3000"
+    baseURL: 'http://localhost:3000',
 });
 
+// const API = "http://localhost:3000";
+
 export const getData = () => {
-    return API.get("/users");
+    return API.get ('/users');
 };
 
 export const addData = (user) => {
-    return API.post("/users",user);
-}
+    return API.post('/users', user);
+};
 
-export const adminData = () => {
-    return API.post("/admins/login")
-}
+// Function to handle admin login
+export const adminData = (credentials) => {
+    return API.post('/admins', credentials);
+};
+

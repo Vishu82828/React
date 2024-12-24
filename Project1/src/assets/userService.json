@@ -2,61 +2,51 @@
   "admins": [
     {
       "id": "1",
-      "name": "Admin One",
-      "email": "admin.one@platform.com",
-      "image": "https://randomuser.me/api/portraits/men/1.jpg",
+      "firstName": "Admin",
+      "lastName": "Sir",
+      "email": "Admin@admin",
+      "image": "https://www.pngmart.com/image/330679",
+      "password": "Admin",
       "role": "admin"
     },
     {
-      "id": "2",
-      "name": "Admin Two",
-      "email": "admin.two@platform.com",
-      "image": "https://randomuser.me/api/portraits/women/2.jpg",
-      "role": "admin"
+      "id": "9280",
+      "email": "Admin@admin",
+      "password": "Admin"
+    },
+    {
+      "id": "f602",
+      "email": "Admin@admin",
+      "password": "Admin"
+    },
+    {
+      "id": "2d2a",
+      "email": "Admin@admin",
+      "password": "Admin"
+    },
+    {
+      "id": "0af9",
+      "email": "vishwajeetsingh8422@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "5d83",
+      "email": "vishwajeetsingh8422@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "a829",
+      "email": "vishwajeetsingh8422@gmail.com",
+      "password": "12345"
     }
   ],
   "users": [
     {
-      "id": "1",
-      "name": "User One",
-      "email": "user.one@platform.com",
-      "image": "https://randomuser.me/api/portraits/men/3.jpg",
-      "role": "user"
-    },
-    {
-      "id": "2",
-      "name": "User Two",
-      "email": "user.two@platform.com",
-      "image": "https://randomuser.me/api/portraits/women/4.jpg",
-      "role": "user"
-    },
-    {
-      "id": "3",
-      "name": "User Three",
-      "email": "user.three@platform.com",
-      "image": "https://randomuser.me/api/portraits/men/5.jpg",
-      "role": "user"
-    },
-    {
-      "id": "4",
-      "name": "User Four",
-      "email": "user.four@platform.com",
-      "image": "https://randomuser.me/api/portraits/women/6.jpg",
-      "role": "user"
-    },
-    {
-      "id": "5",
-      "name": "User Five",
-      "email": "user.five@platform.com",
-      "image": "https://randomuser.me/api/portraits/men/7.jpg",
-      "role": "user"
-    },
-    {
-      "id": "da8b",
+      "id": "62c7",
       "firstName": "VISHWAJEET",
       "lastName": "SINGH",
       "email": "vishwajeetsingh8422@gmail.com",
-      "image": "https://randomuser.me/api/portraits/men/7.jpg",
+      "image": "https://www.pngmart.com/image/352500",
       "password": "12345"
     }
   ]

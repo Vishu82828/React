@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
@@ -33,7 +33,7 @@ function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
-    
+
     // Validate input fields
     if (!formData.email || !formData.password) {
       toast.error('Please fill in both fields');
@@ -41,47 +41,34 @@ function SignIn() {
     }
 
     try {
-      // Fetch user data
-      const userResponse = await getData();
-      const users = userResponse.data;
-      
-      // Fetch admin data
-      const adminResponse = await adminData();
-      const admins = adminResponse.data;
+      // Attempt admin login first
+      const adminResponse = await adminData(formData);
+      const admin = adminResponse.data;
+      // console.log(admin)
+      toast.success(`Welcome, ${admin.name}`);
+      setUser(admin);
+      navigate('/dashboard');
+    } catch (adminError) {
+      // If admin login fails, attempt user login
+      try {
+        const userResponse = await getData();
+        const users = userResponse.data;
+        console.log("Show Data ", userResponse)
 
-      // Check if email exists in users or admins
-      const matchUser = users.find((e) => e.email === formData.email);
-      const matchAdmin = admins.find((e) => e.email === formData.email);
+        const matchUser = users.find((user) => user.email === formData.email && user.password === formData.password);
 
-      // If no match found
-      if (!matchUser && !matchAdmin) {
-        toast.error('Email not found');
-        return;
-      }
+        if (!matchUser) {
+          toast.error('Invalid email or password');
+          return;
+        }
 
-      // Validate password
-      if (matchUser && matchUser.password !== formData.password) {
-        toast.error('Invalid password');
-        return;
-      } else if (matchAdmin && matchAdmin.password !== formData.password) {
-        toast.error('Invalid password');
-        return;
-      }
-
-      // Successful login
-      const user = matchUser || matchAdmin;
-      toast.success(`Welcome, ${user.firstName || user.name}`);
-      setUser(user);
-
-      // Redirect based on role
-      if (user.role === 'admin') {
-        navigate('/dashboard');
-      } else {
+        toast.success(`Welcome, ${matchUser.name}`);
+        setUser(matchUser);
         navigate('/profile');
+      } catch (userError) {
+        console.error('Error during login:', userError);
+        toast.error('Error during login!');
       }
-    } catch (error) {
-      console.error('Error during login:', error);
-      toast.error('Error during login!');
     }
   };
 
