@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
@@ -7,14 +7,12 @@ import FormControl from '@mui/material/FormControl';
 import Email from '@mui/icons-material/Email';
 import Lock from '@mui/icons-material/Lock';
 import Button from '@mui/material/Button';
-import { getData, adminData } from '../API/User';
 import { toast } from 'react-toastify';
-import { UserContext } from './UserContext';
 import { useNavigate, Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
+import { getData, adminData } from '../API/User'; // Make sure to adjust the import path as needed
 
 function SignIn() {
-  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -32,7 +30,6 @@ function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
 
     // Validate input fields
     if (!formData.email || !formData.password) {
@@ -41,34 +38,30 @@ function SignIn() {
     }
 
     try {
-      // Attempt admin login first
-      const adminResponse = await adminData(formData);
-      const admin = adminResponse.data;
-      // console.log(admin)
-      toast.success(`Welcome, ${admin.name}`);
-      setUser(admin);
-      navigate('/dashboard');
-    } catch (adminError) {
-      // If admin login fails, attempt user login
-      try {
-        const userResponse = await getData();
-        const users = userResponse.data;
-        console.log("Show Data ", userResponse)
+      // Get existing users from API
+      const usersResponse = await getData();
+      const users = usersResponse.data;
+      const matchUser = users.find((user) => user.email === formData.email && user.password === formData.password);
 
-        const matchUser = users.find((user) => user.email === formData.email && user.password === formData.password);
+      // Get all admins from API
+      const adminsResponse = await adminData();
+      const admins = adminsResponse.data;
+      const matchAdmin = admins.find((admin) => admin.email === formData.email && admin.password === formData.password);
 
-        if (!matchUser) {
-          toast.error('Invalid email or password');
-          return;
-        }
-
-        toast.success(`Welcome, ${matchUser.name}`);
-        setUser(matchUser);
-        navigate('/profile');
-      } catch (userError) {
-        console.error('Error during login:', userError);
-        toast.error('Error during login!');
+      if (matchUser) {
+        localStorage.setItem('currentUser', JSON.stringify(matchUser));
+        navigate(`/profile/${matchUser.email}`);
+        toast.success(`Welcome, ${matchUser.firstName}`);
+      } else if (matchAdmin) {
+        localStorage.setItem('currentUser', JSON.stringify(matchAdmin));
+        navigate('/dashboard');
+        toast.success('Welcome Admin');
+      } else {
+        toast.error('Invalid email or password');
       }
+    } catch (error) {
+      console.error('Error during login:', error);
+      toast.error('Error during login!');
     }
   };
 

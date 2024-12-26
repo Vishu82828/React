@@ -26,18 +26,17 @@ const API = axios.create({
     baseURL: 'http://localhost:3000',
 });
 
-// const API = "http://localhost:3000";
-
 export const getData = () => {
-    return API.get ('/users');
+    return API.get('/users');
 };
 
 export const addData = (user) => {
     return API.post('/users', user);
 };
 
-// Function to handle admin login
-export const adminData = (credentials) => {
-    return API.post('/admins', credentials);
+// Function to get all admin data
+export const adminData = () => {
+    return API.get('/admins');
 };
+
 

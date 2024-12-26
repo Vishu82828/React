@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useContext } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -14,9 +13,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import ExitToApp from '@mui/icons-material/ExitToApp'; // Updated import for SignOut icon
+import ExitToApp from '@mui/icons-material/ExitToApp';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { UserContext } from './UserContext';
 
 const theme = createTheme({
   palette: {
@@ -30,13 +28,12 @@ const theme = createTheme({
 });
 
 const pages = ['Movies', 'TV Shows', 'My List'];
-const settings = ['Profile', 'Account', 'Dashboard', 'SignOut']; // Updated settings array
+const settings = ['Profile', 'Account', 'Dashboard', 'SignOut'];
 
 function Navbar() {
-  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -55,9 +52,11 @@ function Navbar() {
   };
 
   const signOut = () => {
-    setUser(null); 
+    localStorage.clear();
     navigate("/sign-in");
   };
+
+  const user = JSON.parse(localStorage.getItem('currentUser'));
 
   return (
     <ThemeProvider theme={theme}>
@@ -156,7 +155,7 @@ function Navbar() {
               ))}
             </Box>
             <Box sx={{ flexGrow: 0 }}>
-              {user ? ( // Check if user is authenticated
+              {user ? (
                 <>
                   <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -181,19 +180,25 @@ function Navbar() {
                   >
                     {settings.map((setting) => (
                       <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                        <Typography
-                          component={Link}
-                          to={`/${setting.toLowerCase().replace(' ', '-')}`}
-                          sx={{ textAlign: 'center', textDecoration: 'none', color: 'inherit' }}
-                        >
-                          {setting}
-                        </Typography>
+                        {setting === 'SignOut' ? (
+                          <Typography
+                            textAlign="center"
+                            onClick={signOut}
+                            sx={{ textAlign: 'center', textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}
+                          >
+                            {setting}
+                          </Typography>
+                        ) : (
+                          <Typography
+                            component={Link}
+                            to={`/${setting.toLowerCase().replace(' ', '-')}`}
+                            sx={{ textAlign: 'center', textDecoration: 'none', color: 'inherit' }}
+                          >
+                            {setting}
+                          </Typography>
+                        )}
                       </MenuItem>
                     ))}
-                    <MenuItem onClick={signOut}>
-                      <Typography textAlign="center" sx={{ color: 'success.main' }}>Sign Out</Typography>
-                      <ExitToApp sx={{ ml: 1, color: 'success.main' }} /> {/* Updated icon for SignOut */}
-                    </MenuItem>
                   </Menu>
                 </>
               ) : (

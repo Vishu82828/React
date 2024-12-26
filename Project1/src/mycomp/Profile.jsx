@@ -1,20 +1,29 @@
-import React, { useContext } from 'react';
-import { UserContext } from './UserContext';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import '../mystyle/Profile.css';
+import data from '../assets/userService.json';
 
 const Profile = () => {
-  const { user } = useContext(UserContext);
+  const { email } = useParams();
+  const [profileUser, setProfileUser] = useState(null);
+
+  useEffect(() => {
+    const user = data.users.find(u => u.email === email);
+    setProfileUser(user);
+  }, [email]);
 
   return (
-    <div>
-      <h1>Profile</h1>
-      {user ? (
-        <div>
-          <p>First Name: {user.firstName}</p>
-          <p>Last Name: {user.lastName}</p>
-          <p>Email: {user.email}</p>
+    <div className="profile-container">
+      <h1 className="profile-title">Profile</h1>
+      {profileUser ? (
+        <div className="profile-details">
+          <img src={profileUser.image} alt="User Avatar" className="profile-avatar" />
+          <p><strong>First Name:</strong> {profileUser.firstName}</p>
+          <p><strong>Last Name:</strong> {profileUser.lastName}</p>
+          <p><strong>Email:</strong> {profileUser.email}</p>
         </div>
       ) : (
-        <p>Please log in to view your profile.</p>
+        <p className="profile-message">Please log in to view your profile.</p>
       )}
     </div>
   );

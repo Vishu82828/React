@@ -1,43 +1,12 @@
 {
   "admins": [
     {
-      "id": "1",
+      "id": "9e19",
       "firstName": "Admin",
       "lastName": "Sir",
       "email": "Admin@admin",
-      "image": "https://www.pngmart.com/image/330679",
-      "password": "Admin",
-      "role": "admin"
-    },
-    {
-      "id": "9280",
-      "email": "Admin@admin",
+      "image": "/assets/images/img3.jpg",
       "password": "Admin"
-    },
-    {
-      "id": "f602",
-      "email": "Admin@admin",
-      "password": "Admin"
-    },
-    {
-      "id": "2d2a",
-      "email": "Admin@admin",
-      "password": "Admin"
-    },
-    {
-      "id": "0af9",
-      "email": "vishwajeetsingh8422@gmail.com",
-      "password": "12345"
-    },
-    {
-      "id": "5d83",
-      "email": "vishwajeetsingh8422@gmail.com",
-      "password": "12345"
-    },
-    {
-      "id": "a829",
-      "email": "vishwajeetsingh8422@gmail.com",
-      "password": "12345"
     }
   ],
   "users": [
@@ -46,7 +15,7 @@
       "firstName": "VISHWAJEET",
       "lastName": "SINGH",
       "email": "vishwajeetsingh8422@gmail.com",
-      "image": "https://www.pngmart.com/image/352500",
+      "image": "/assets/images/img1.jpg",
       "password": "12345"
     }
   ]

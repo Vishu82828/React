@@ -8,13 +8,12 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import Button from '@mui/material/Button';
 import Email from '@mui/icons-material/Email';
 import Lock from '@mui/icons-material/Lock';
-import { addData } from '../API/User';
 import { toast } from 'react-toastify';
 import { useNavigate, Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
+import { addData } from '../API/User'; // Adjust the import path as needed
 
 function SignUp() {
-
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -38,8 +37,8 @@ function SignUp() {
     }
 
     try {
-      const addUser = await addData(formData);
-      toast.success(`Welcome ${addUser.data.firstName}`);
+      const response = await addData(formData);
+      toast.success(`Welcome ${response.data.firstName}`);
       navigate('/sign-in');
     } catch (error) {
       console.error('Error adding user:', error);
