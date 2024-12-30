@@ -5,7 +5,7 @@
       "firstName": "Admin",
       "lastName": "Sir",
       "email": "Admin@admin",
-      "image": "/assets/images/img3.jpg",
+      "image": "/images/img3.jpg",
       "password": "Admin"
     }
   ],
@@ -15,7 +15,7 @@
       "firstName": "VISHWAJEET",
       "lastName": "SINGH",
       "email": "vishwajeetsingh8422@gmail.com",
-      "image": "/assets/images/img1.jpg",
+      "image": "/images/img1.jpg",
       "password": "12345"
     }
   ]

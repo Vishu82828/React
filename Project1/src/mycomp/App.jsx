@@ -17,7 +17,7 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<ProtectedRoute><Movies /></ProtectedRoute>} />
+        <Route path="/*" element={<ProtectedRoute><Movies /></ProtectedRoute>} />
         <Route path="/movies" element={<ProtectedRoute><Movies /></ProtectedRoute>} />
         <Route path="/tv-shows" element={<ProtectedRoute><TvShows /></ProtectedRoute>} />
         <Route path="/my-list" element={<ProtectedRoute><MyList /></ProtectedRoute>} />
